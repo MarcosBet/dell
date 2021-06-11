@@ -10,6 +10,7 @@ public class OrdersVO {
     private BigDecimal netAmount;
     private BigDecimal tax;
     private BigDecimal totalAmount;
+    private Integer customersId;
     private List<OrderlinesVO> listOrderLinesVO;
 
     public Integer getOrderId() {
@@ -60,4 +61,14 @@ public class OrdersVO {
     public void setTotalAmount(BigDecimal totalAmount) {
         this.totalAmount = totalAmount;
     }
+
+    public Integer getCustomersId() {
+        return customersId;
+    }
+
+    public void setCustomersId(Integer customersId) {
+        this.customersId = customersId;
+    }
+
+
 }

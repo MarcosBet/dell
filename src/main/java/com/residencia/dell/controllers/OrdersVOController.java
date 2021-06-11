@@ -1,6 +1,6 @@
 package com.residencia.dell.controllers;
 
-import com.residencia.dell.entities.Orderlines;
+
 import com.residencia.dell.entities.Orders;
 import com.residencia.dell.services.OrdersServices;
 import com.residencia.dell.vo.OrdersVO;
@@ -11,21 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
-@RequestMapping("/orders")
-public class OrdersControllers {
+@RequestMapping("/ordersVO")
+public class OrdersVOController {
+
     @Autowired
     OrdersServices ordersService;
-
-
-
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Orders> findById(@PathVariable Integer id){
-//        HttpHeaders headers = new HttpHeaders();
-//        return new ResponseEntity<>(ordersService.findById(id),headers, HttpStatus.OK);}
-
 
     @GetMapping("/{id}")
     public ResponseEntity<OrdersVO> findById(@PathVariable Integer id){
@@ -35,15 +26,18 @@ public class OrdersControllers {
 
     //****************************************************************************************************************
 
-    @GetMapping
-    public ResponseEntity<List<Orders>>findAll(
-        @RequestParam(required = false)Integer  pagina,
-        @RequestParam(required = false)Integer qtdRegistros)
-        throws Exception{
+    @GetMapping("/{")
+    public ResponseEntity findAll(
+            @RequestParam(required = false)Integer  pagina,
+            @RequestParam(required = false)Integer qtdRegistros)
+            throws Exception{
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(ordersService.findAll(pagina, qtdRegistros),headers,HttpStatus.OK);
-
     }
+
+//****************************************************************************************************************
+
+
 
 //    @GetMapping("/listar-todos")
 //    public ResponseEntity<List<OrderVO>>findAllvo(
@@ -52,37 +46,34 @@ public class OrdersControllers {
 //            throws Exception{
 //        HttpHeaders headers = new HttpHeaders();
 //        return new ResponseEntity<>(ordersService.findAllvo(pagina, qtdRegistros)),headers,HttpStatus.Ok);
-//
-//
-//    )
 
 
     //****************************************************************************************************************
 
     @PostMapping
-    public ResponseEntity<Orders>Save (@RequestBody Orders orders){
+    public ResponseEntity<OrdersVO>Save (@RequestBody OrdersVO ordersVO){
         HttpHeaders headers = new HttpHeaders();
 
-        Orders novoOrders = ordersService.save(orders);
+        OrdersVO novoOrdersVO = ordersService.saveVO(ordersVO);
 
-        if(null!=novoOrders){
-            return new ResponseEntity<>(novoOrders, headers, HttpStatus.OK);}
+        if(null!=novoOrdersVO){
+            return new ResponseEntity<>(novoOrdersVO, headers, HttpStatus.OK);}
         else{
-            return new ResponseEntity<>(novoOrders,headers,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(novoOrdersVO,headers,HttpStatus.BAD_REQUEST);
         }
 
     }
     //****************************************************************************************************************
-    @PutMapping("/{id}")
-    public ResponseEntity<Orders> update(@PathVariable Integer id, @RequestBody Orders orders) {
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(ordersService.update(id, orders), headers, HttpStatus.OK);
+    @PutMapping
+
+    public Orders update(Integer Id,Orders orders ){
+        return  ordersService.update(Id, orders);
     }
 
     //****************************************************************************************************************
     @DeleteMapping
 
-    public ResponseEntity<Orders>delete(@RequestParam Integer id){
+    public ResponseEntity<OrdersVO>delete(@RequestParam Integer id){
         HttpHeaders headers = new HttpHeaders();
         boolean isRemoved = ordersService.delete(id);
 
@@ -96,3 +87,4 @@ public class OrdersControllers {
 
 
 }
+

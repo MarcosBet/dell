@@ -1,5 +1,7 @@
 package com.residencia.dell.entities;
 
+import springfox.documentation.service.ApiInfo;
+
 import javax.persistence.*;
 import java.util.Calendar;
 
@@ -37,8 +39,24 @@ public class Orderlines {
     @Column(name = "orderdate")
     private Calendar orderDate;
 
+    @Column(name = "title")
+    private String Title;
 
+    public Orders getOrders() {
+        return orders;
+    }
 
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
+    }
 
     public Integer getOrderLineId() {
         return orderLineId;
@@ -72,6 +90,7 @@ public class Orderlines {
     public void setOrderDate(Calendar orderDate) {
         this.orderDate = orderDate;
     }
+
 
 
 }

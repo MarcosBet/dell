@@ -1,22 +1,32 @@
 package com.residencia.dell.vo;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
 
 public class NotaFiscalVO {
-    private  Integer orderId;
+    private Integer orderId;
     private Calendar orderDate;
-    private Integer netAmount;
-    private Integer totalAmount;
     private String customerFirstName;
-    private String customerLastname;
-    private List<ItemOrderlineVO> listItemOrderlinesVO;
+    private String customerLastName;
+    private BigDecimal netAmount;
+    private BigDecimal totalAmount;
+    private Integer quantity;
+
+    private String title;
+    private List<OrderlinesVO>listOrderlineVO;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public Integer getOrderId() {
         return orderId;
     }
-
-
 
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
@@ -30,22 +40,6 @@ public class NotaFiscalVO {
         this.orderDate = orderDate;
     }
 
-    public Integer getNetAmount() {
-        return netAmount;
-    }
-
-    public void setNetAmount(Integer netAmount) {
-        this.netAmount = netAmount;
-    }
-
-    public Integer getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(Integer totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
     public String getCustomerFirstName() {
         return customerFirstName;
     }
@@ -54,19 +48,43 @@ public class NotaFiscalVO {
         this.customerFirstName = customerFirstName;
     }
 
-    public String getCustomerLastname() {
-        return customerLastname;
+    public BigDecimal getNetAmount() {
+        return netAmount;
     }
 
-    public void setCustomerLastname(String customerLastname) {
-        this.customerLastname = customerLastname;
+    public void setNetAmount(BigDecimal netAmount) {
+        this.netAmount = netAmount;
     }
 
-    public List<ItemOrderlineVO> getListItemOrderlinesVO() {
-        return listItemOrderlinesVO;
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setListItemOrderlineVO(List<ItemOrderlineVO> listItemOrderlinesVO) {
-        this.listItemOrderlinesVO = listItemOrderlinesVO;
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public List<OrderlinesVO> getListOrderlineVO() {
+        return listOrderlineVO;
+    }
+
+    public void setListOrderlineVO(List<OrderlinesVO> listOrderlineVO) {
+        this.listOrderlineVO = listOrderlineVO;
+    }
+
+    public String getCustomerLastName() {
+        return customerLastName;
+    }
+
+    public void setCustomerLastName(String customerLastName) {
+        this.customerLastName = customerLastName;
     }
 }
