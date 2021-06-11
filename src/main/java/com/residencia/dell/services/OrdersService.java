@@ -119,7 +119,7 @@ public class OrdersService {
         return ordersVO;
     }
 
-    private Orders converteVOParaEntidade (OrdersVO ordersVO) {
+    private Orders converteVOParaEntidade(OrdersVO ordersVO) {
         Orders orders = new Orders();
 
         Customers customer = customersRepository.getById(ordersVO.getCustomerId());

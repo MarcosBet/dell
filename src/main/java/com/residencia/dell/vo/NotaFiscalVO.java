@@ -1,7 +1,5 @@
 package com.residencia.dell.vo;
 
-import com.residencia.dell.entities.Customers;
-
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;

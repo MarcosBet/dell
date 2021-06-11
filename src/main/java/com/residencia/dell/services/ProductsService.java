@@ -1,7 +1,6 @@
 package com.residencia.dell.services;
 
 import com.residencia.dell.entities.Products;
-import com.residencia.dell.exceptions.ControllerExceptionHandler;
 import com.residencia.dell.repositories.ProductsRepository;
 import com.residencia.dell.vo.ProductsVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +17,11 @@ public class ProductsService {
     @Autowired
     public ProductsRepository productsRepository;
 
-    public Products findById(Integer id){
+    public Products findById(Integer id) {
         return productsRepository.findById(id).get();
     }
 
-    public List<Products> findAll(){
+    public List<Products> findAll() {
         return productsRepository.findAll();
     }
 
@@ -95,11 +94,10 @@ public class ProductsService {
         return productsRepository.count();
     }
 
-    public Products save (Products products){
-        if(productsRepository.save(products).getProdId()!=null){
+    public Products save(Products products) {
+        if (productsRepository.save(products).getProdId() != null) {
             return productsRepository.save(products);
-        }
-        else{
+        } else {
             return null;
         }
 

@@ -11,6 +11,7 @@ public class CustHist {
     @Id
     @Column(name = "customerid")
     private Integer customerid;
+
     public Integer getCustomerid() {
         return customerid;
     }

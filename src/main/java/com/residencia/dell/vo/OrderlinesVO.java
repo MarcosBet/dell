@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class OrderlinesVO {
     private Integer orderlineid;
-    private OrdersVO ordersVO;
+    private Integer ordersVO;
     private Integer prodId;
     private Integer quantity;
     private Calendar orderDate;
@@ -17,11 +17,11 @@ public class OrderlinesVO {
         this.orderlineid = orderlineid;
     }
 
-    public OrdersVO getOrdersVO() {
+    public Integer getOrdersVO() {
         return ordersVO;
     }
 
-    public void setOrdersVO(OrdersVO ordersVO) {
+    public void setOrdersVO(Integer ordersVO) {
         this.ordersVO = ordersVO;
     }
 

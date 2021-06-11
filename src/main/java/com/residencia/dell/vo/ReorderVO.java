@@ -1,22 +1,14 @@
-package com.residencia.dell.entities;
+package com.residencia.dell.vo;
 
-import javax.persistence.Id;
-
-import javax.persistence.*;
 import java.util.Calendar;
 
-@Entity
-@Table(name = "reorder")
-public class Reorder {
+public class ReorderVO {
+    private Integer prodId;
     private Calendar dateLow;
     private Integer quanLow;
     private Calendar dateReordered;
     private Integer quanReordered;
     private Calendar dateExpected;
-
-    @Id
-    @Column(name = "prod_id")
-    private Integer prodId;
 
     public Integer getProdId() {
         return prodId;
@@ -26,7 +18,6 @@ public class Reorder {
         this.prodId = prodId;
     }
 
-    @Column(name = "date_low")
     public Calendar getDateLow() {
         return dateLow;
     }
@@ -35,7 +26,6 @@ public class Reorder {
         this.dateLow = dateLow;
     }
 
-    @Column(name = "quan_low")
     public Integer getQuanLow() {
         return quanLow;
     }
@@ -44,7 +34,6 @@ public class Reorder {
         this.quanLow = quanLow;
     }
 
-    @Column(name = "date_reordered")
     public Calendar getDateReordered() {
         return dateReordered;
     }
@@ -53,7 +42,6 @@ public class Reorder {
         this.dateReordered = dateReordered;
     }
 
-    @Column(name = "quan_reordered")
     public Integer getQuanReordered() {
         return quanReordered;
     }
@@ -62,7 +50,6 @@ public class Reorder {
         this.quanReordered = quanReordered;
     }
 
-    @Column(name = "date_expected")
     public Calendar getDateExpected() {
         return dateExpected;
     }
