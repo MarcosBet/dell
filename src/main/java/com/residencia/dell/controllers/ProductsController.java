@@ -4,11 +4,9 @@ import com.residencia.dell.entities.Products;
 import com.residencia.dell.services.ProductsService;
 import com.residencia.dell.vo.ProductsVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -64,9 +62,14 @@ public class ProductsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Products> update(@Valid @PathVariable Integer id, @RequestBody Products products) {
+    public ResponseEntity<Products> update(@Valid @RequestBody Products products, @PathVariable Integer id) {
         HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(productsService.update(id, products), headers, HttpStatus.OK);
+        Products product = productsService.update(id, products);
+        if(null != products) {
+            return ResponseEntity.ok().body(product);
+        } else {
+            return new ResponseEntity<>(productsService.update(id, products), headers, HttpStatus.OK);
+        }
     }
 
     @DeleteMapping("/{id}")

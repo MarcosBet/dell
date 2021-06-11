@@ -52,8 +52,8 @@ public class OrdersController {
 
     @GetMapping("/nota-fiscal/{id}")
     public ResponseEntity<NotaFiscalVO> emitirNotaFiscal(@PathVariable Integer id) {
-            HttpHeaders headers = new HttpHeaders();
-            return new ResponseEntity<>(ordersService.emitirNF(id), headers, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(ordersService.emitirNF(id), headers, HttpStatus.OK);
     }
 
     @PostMapping

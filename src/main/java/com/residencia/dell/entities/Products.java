@@ -1,13 +1,9 @@
 package com.residencia.dell.entities;
 
 import org.hibernate.validator.constraints.Range;
-import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -23,7 +19,7 @@ public class Products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "prod_id",nullable = false)
+    @Column(name = "prod_id", nullable = false)
     public Integer getProdId() {
         return prodId;
     }
@@ -32,16 +28,15 @@ public class Products {
         this.prodId = prodId;
     }
 
-
-
-    @NotNull(message = "Preencha  a categoria Corretamente.")
-    @Range(min =1 , max = 16, message = "Tamanho mínimo : 1 / Tamanho máximo: 16")
+    @NotNull(message = "Preencha a categoria corretamente.")
+    @Range(min = 1, max = 16, message = "Tamanho mínimo: 1 / Tamanho máximo: 16")
     @Column(name = "category")
     public Integer getCategory() {
         return category;
     }
 
-    public void setCategory(Integer category) {this.category = category;
+    public void setCategory(Integer category) {
+        this.category = category;
     }
 
     @NotBlank(message = "Preencha o título corretamente.")
@@ -56,7 +51,7 @@ public class Products {
     }
 
     @NotBlank(message = "Preencha o ator corretamente.")
-    @Size(min = 1, max = 50, message = "Tamanho mínimo: 1 \ Tamanho máximo: 50")
+    @Size(min = 1, max = 50, message = "Tamanho mínimo: 1 / Tamanho máximo: 50")
     @Column(name = "actor", nullable = false, length = 50)
     public String getActor() {
         return actor;
@@ -67,8 +62,8 @@ public class Products {
     }
 
     @NotNull(message = "Preencha o preço corretamente.")
-    @DecimalMin(value = "1", message="O preço não pode ser menor que R${value}.00")
-    @DecimalMax(value = "1000", message="O preço não pode ser maior que R${value}.00")
+    @DecimalMin(value = "1", message = "O preço não pode ser menor que R${value}.00")
+    @DecimalMax(value = "1000", message = "O preço não pode ser maior que R${value}.00")
     @Column(name = "price")
     public BigDecimal getPrice() {
         return price;
