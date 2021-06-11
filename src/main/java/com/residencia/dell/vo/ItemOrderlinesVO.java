@@ -1,6 +1,6 @@
 package com.residencia.dell.vo;
 
-public class ItemOrderlineVO {
+public class ItemOrderlinesVO {
     private String title;
     private Integer prodId;
     private Integer quantity;

@@ -1,53 +1,22 @@
 package com.residencia.dell.entities;
 
+import javax.persistence.Id;
+
 import javax.persistence.*;
 import java.util.Calendar;
 
 @Entity
-@Table(name="reorder")
-
+@Table(name = "reorder")
 public class Reorder {
-
-
-    //criar outro id
-
-    @Id  //não
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "prod_id")
-    private Integer prodId;
-
-
- //***************************************************************************************************
-
- //    @OneToMany
- //    @JoinColumn(name = "prod_id", referencedColumnName = "prod_id")
- //    private Products products;
- //      ou
- //    (mappedBy="prod_id")
- //***************************************************************************************************
-
-
-    @Column(name = "date_low")
     private Calendar dateLow;
-
-    @Column(name = "quan_low")
     private Integer quanLow;
-
-    @Column(name = "date_reordered")
     private Calendar dateReordered;
-
-
-    @Column(name = "quan_reordered")
     private Integer quanReordered;
-
-
-    @Column(name = "date_expected")
     private Calendar dateExpected;
 
-
-
-
-
+    @Id
+    @Column(name = "prod_id")
+    private Integer prodId;
     public Integer getProdId() {
         return prodId;
     }
@@ -56,6 +25,7 @@ public class Reorder {
         this.prodId = prodId;
     }
 
+    @Column(name = "date_low")
     public Calendar getDateLow() {
         return dateLow;
     }
@@ -64,6 +34,7 @@ public class Reorder {
         this.dateLow = dateLow;
     }
 
+    @Column(name = "quan_low")
     public Integer getQuanLow() {
         return quanLow;
     }
@@ -72,6 +43,7 @@ public class Reorder {
         this.quanLow = quanLow;
     }
 
+    @Column(name = "date_reordered")
     public Calendar getDateReordered() {
         return dateReordered;
     }
@@ -80,6 +52,7 @@ public class Reorder {
         this.dateReordered = dateReordered;
     }
 
+    @Column(name = "quan_reordered")
     public Integer getQuanReordered() {
         return quanReordered;
     }
@@ -88,6 +61,7 @@ public class Reorder {
         this.quanReordered = quanReordered;
     }
 
+    @Column(name = "date_expected")
     public Calendar getDateExpected() {
         return dateExpected;
     }
@@ -96,5 +70,3 @@ public class Reorder {
         this.dateExpected = dateExpected;
     }
 }
-
-

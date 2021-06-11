@@ -1,89 +1,80 @@
 package com.residencia.dell.controllers;
 
 import com.residencia.dell.entities.Orderlines;
-import com.residencia.dell.entities.Orders;
-import com.residencia.dell.services.OrderlinesServices;
-import com.residencia.dell.services.OrdersServices;
+import com.residencia.dell.services.OrderlinesService;
+import com.residencia.dell.vo.OrderlinesVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.chrono.ThaiBuddhistEra;
 import java.util.List;
 
-
-@Controller
+@RestController
 @RequestMapping("/orderlines")
 public class OrderlinesController {
+/*
     @Autowired
-    public OrderlinesServices orderLinesServices;
+    private OrderlinesService orderlinesService;
 
-
-    @GetMapping("/{id}/{orderId}")
-    public  ResponseEntity<Orderlines>findById(@PathVariable Integer id,@PathVariable Integer orderId ){
-        HttpHeaders headers= new HttpHeaders();
-        return new ResponseEntity<>(orderLinesServices.findById(id,orderId),headers, HttpStatus.OK);
+    @GetMapping("/{orderlineId}/{orderId}")
+    public ResponseEntity<Orderlines> findById(@PathVariable Integer orderlineId, @PathVariable Integer orderId) {
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(orderlinesService.findById(orderlineId, orderId), headers, HttpStatus.OK);
     }
-
-    //****************************************************************************************************************
 
     @GetMapping
-    public ResponseEntity<List<Orderlines>>findAll(
-            @RequestParam(required = false)Integer  pages,
-            @RequestParam(required = false)Integer registersQuantity)
-            throws Exception{
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(orderLinesServices.findAll(pages, registersQuantity),headers,HttpStatus.OK);
+    public ResponseEntity<List<Orderlines>> findAll(
+            @RequestParam(required = false) Integer pagina,
+            @RequestParam(required = false) Integer qtdRegistros)
+            throws Exception {
 
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(orderlinesService.findAll(pagina,
+                qtdRegistros), headers, HttpStatus.OK);
     }
 
-    //****************************************************************************************************************
+    @GetMapping("/listar-todos")
+    public ResponseEntity<List<OrderlinesVO>> findAllVO(
+            @RequestParam(required = false) Integer pagina,
+            @RequestParam(required = false) Integer qtdRegistros)
+            throws Exception {
+
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(orderlinesService.findAllVO(pagina,
+                qtdRegistros), headers, HttpStatus.OK);
+    }
+
     @GetMapping("/count")
     public Long count() {
-        return orderLinesServices.count();
+        return orderlinesService.count();
     }
-   //****************************************************************************************************************
 
     @PostMapping
-    public ResponseEntity<Orderlines>Save (@RequestBody Orderlines orderlines){
+    public ResponseEntity<Orderlines> save(@RequestBody Orderlines orderline) {
         HttpHeaders headers = new HttpHeaders();
-
-        Orderlines novoOrderlines = orderLinesServices.save(orderlines);
-
-        if(null!=novoOrderlines){
-            return new ResponseEntity<>(novoOrderlines, headers, HttpStatus.OK);}
-        else{
-            return new ResponseEntity<>(novoOrderlines,headers,HttpStatus.BAD_REQUEST);
-        }
-
-    }
-    //****************************************************************************************************************
-    @PutMapping
-
-    public Orderlines update(Orderlines orderlines){
-        return  orderLinesServices.update(orderlines);
+        Orderlines orderlines = orderlinesService.save(orderline);
+        if (null != orderlines)
+            return ResponseEntity.ok().body(orderlines);
+        else
+            return new ResponseEntity<>(orderlinesService.save(orderlines), headers, HttpStatus.BAD_REQUEST);
     }
 
-    //****************************************************************************************************************
-    @DeleteMapping
-
-    public ResponseEntity<Orderlines>delete(@RequestParam Integer id){
+    @PutMapping("/{orderlineId}/{orderId}")
+    public ResponseEntity<Orderlines> update(@PathVariable Integer orderlineId, @PathVariable Integer orderId, @RequestBody Orderlines orderlines) {
         HttpHeaders headers = new HttpHeaders();
-        boolean isRemoved = orderLinesServices.delete(id);
-
-        if(isRemoved){
-            return new ResponseEntity<>(headers, HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
-        }
+        return new ResponseEntity<>(orderlinesService.update(orderlineId, orderId, orderlines), headers, HttpStatus.OK);
     }
 
-
-
-
+    @DeleteMapping("/{orderlineId}/{orderId}")
+    public ResponseEntity<Orderlines> delete(@PathVariable Integer orderlineId, @PathVariable Integer orderId) {
+        try {
+            orderlinesService.delete(orderlineId, orderId);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().build();
+    }
+  */
 }

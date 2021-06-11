@@ -1,15 +1,19 @@
 package com.residencia.dell.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="inventory")
+@Table(name = "inventory")
 public class Inventory {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "prod_id")
     private Integer prodId;
+    private Integer quanInStock;
+    private Integer sales;
 
+    @Id
+    @Column(name = "prod_id")
     public Integer getProdId() {
         return prodId;
     }
@@ -19,23 +23,7 @@ public class Inventory {
     }
 
 
-
-
-//***************************************************************************************************
-
- //    @OneToMany
- //    @JoinColumn(name = "prod_id", referencedColumnName = "prod_id")
- //    private Products products;
-//      ou
- //    (mappedBy="prod_id")
- //***************************************************************************************************
-
-
-
- //************************************************************************************************************
-    @Column(name="quan_in_stock")
-    private Integer quanInStock;
-
+    @Column(name = "quan_in_stock")
     public Integer getQuanInStock() {
         return quanInStock;
     }
@@ -44,10 +32,8 @@ public class Inventory {
         this.quanInStock = quanInStock;
     }
 
-    //************************************************************************************************************
-    @Column(name ="sales")
-    private Integer sales;
 
+    @Column(name = "sales")
     public Integer getSales() {
         return sales;
     }
@@ -55,6 +41,5 @@ public class Inventory {
     public void setSales(Integer sales) {
         this.sales = sales;
     }
-
 
 }

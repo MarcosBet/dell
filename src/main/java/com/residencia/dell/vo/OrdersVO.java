@@ -1,5 +1,7 @@
 package com.residencia.dell.vo;
 
+import com.residencia.dell.entities.Customers;
+
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.List;
@@ -10,8 +12,16 @@ public class OrdersVO {
     private BigDecimal netAmount;
     private BigDecimal tax;
     private BigDecimal totalAmount;
-    private Integer customersId;
+    private Integer customerId;
     private List<OrderlinesVO> listOrderLinesVO;
+
+    public Integer getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
 
     public Integer getOrderId() {
         return orderId;
@@ -45,15 +55,6 @@ public class OrdersVO {
         this.tax = tax;
     }
 
-
-    public List<OrderlinesVO> getListOrderLinesVO() {
-        return listOrderLinesVO;
-    }
-
-    public void setListOrderLinesVO(List<OrderlinesVO> listOrderLinesVO) {
-        this.listOrderLinesVO = listOrderLinesVO;
-    }
-
     public BigDecimal getTotalAmount() {
         return totalAmount;
     }
@@ -62,13 +63,11 @@ public class OrdersVO {
         this.totalAmount = totalAmount;
     }
 
-    public Integer getCustomersId() {
-        return customersId;
+    public List<OrderlinesVO> getListOrderLinesVO() {
+        return listOrderLinesVO;
     }
 
-    public void setCustomersId(Integer customersId) {
-        this.customersId = customersId;
+    public void setListOrderLinesVO(List<OrderlinesVO> listOrderLinesVO) {
+        this.listOrderLinesVO = listOrderLinesVO;
     }
-
-
 }

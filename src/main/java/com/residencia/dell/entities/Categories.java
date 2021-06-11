@@ -1,17 +1,16 @@
 package com.residencia.dell.entities;
 
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="categories")
+@Table(name = "categories")
 public class Categories {
+    private Integer category;
+    private String categoryname;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category")
-    private Integer category;
-
     public Integer getCategory() {
         return category;
     }
@@ -20,26 +19,12 @@ public class Categories {
         this.category = category;
     }
 
-//*************************************************************************************************************
-
     @Column(name = "categoryname")
-    private Character categoryName;
-
-
-
-
-    public Character getCategoryName() {
-        return categoryName;
+    public String getCategoryname() {
+        return categoryname;
     }
 
-    public void setCategoryName(Character categoryName) {
-        this.categoryName = categoryName;
+    public void setCategoryname(String categoryname) {
+        this.categoryname = categoryname;
     }
-
-
-
-
-//*************************************************************************************************************
-
-
 }

@@ -1,114 +1,67 @@
 package com.residencia.dell.entities;
 
-
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Collection;
 
 @Entity
 @Table(name = "customers")
 public class Customers {
+    private Integer customerid;
+    private String firstname;
+    private String lastname;
+    private String address1;
+    private String address2;
+    private String city;
+    private String state;
+    private Integer zip;
+    private String country;
+    private Short region;
+    private String email;
+    private String phone;
+    private Integer creditcardtype;
+    private String creditcard;
+    private String creditcardexpiration;
+    private String username;
+    private String password;
+    private Short age;
+    private Integer income;
+    private String gender;
+    private Collection<CustHist> custHistsByCustomerid;
+    private Collection<Orders> ordersByCustomerid;
 
-    @Id //Chave primária
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerid")
-    private Integer customerId;
+    public Integer getCustomerid() {
+        return customerid;
+    }
 
-
-    @OneToMany(mappedBy = "customer")
-    private List<Orders> listorders;
-
-//    @OneToMany(mappedBy ="cust_hist" )
-//    private List<Cust_hist> listCust_hist;
+    public void setCustomerid(Integer customerid) {
+        this.customerid = customerid;
+    }
 
 
     @Column(name = "firstname")
-    private String firstName;
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
 
     @Column(name = "lastname")
-    private String lastName;
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
 
     @Column(name = "address1")
-    private String address1;
-
-    @Column(name = "address2")
-    private String address2;
-
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "state")
-    private String state;
-
-    @Column(name = "zip")
-    private Integer zipCode;
-
-    @Column(name = "country")
-    private String country;
-
-    @Column(name = "region")
-    private Integer region;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @Column(name = "creditcardtype")
-    private Integer creditCardType;
-
-    @Column(name = "creditcard")
-    private String creditCard;
-
-    @Column(name = "creditcardexpiration")
-    private String creditCardExpiration;
-
-    @Column(name = "username", unique=true)
-    private String userName;
-
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "age")
-    private Integer age;
-
-    @Column(name = "income")
-    private Integer income;
-
-    @Column(name = "gender")
-    private Character gender;
-
-
-
-
-
-
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getAddress1() {
         return address1;
     }
@@ -117,6 +70,8 @@ public class Customers {
         this.address1 = address1;
     }
 
+
+    @Column(name = "address2")
     public String getAddress2() {
         return address2;
     }
@@ -125,6 +80,8 @@ public class Customers {
         this.address2 = address2;
     }
 
+
+    @Column(name = "city")
     public String getCity() {
         return city;
     }
@@ -133,6 +90,8 @@ public class Customers {
         this.city = city;
     }
 
+
+    @Column(name = "state")
     public String getState() {
         return state;
     }
@@ -141,14 +100,18 @@ public class Customers {
         this.state = state;
     }
 
-    public Integer getZipCode() {
-        return zipCode;
+
+    @Column(name = "zip")
+    public Integer getZip() {
+        return zip;
     }
 
-    public void setZipCode(Integer zipCode) {
-        this.zipCode = zipCode;
+    public void setZip(Integer zip) {
+        this.zip = zip;
     }
 
+
+    @Column(name = "country")
     public String getCountry() {
         return country;
     }
@@ -157,14 +120,18 @@ public class Customers {
         this.country = country;
     }
 
-    public Integer getRegion() {
+
+    @Column(name = "region")
+    public Short getRegion() {
         return region;
     }
 
-    public void setRegion(Integer region) {
+    public void setRegion(Short region) {
         this.region = region;
     }
 
+
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -173,6 +140,8 @@ public class Customers {
         this.email = email;
     }
 
+
+    @Column(name = "phone")
     public String getPhone() {
         return phone;
     }
@@ -181,38 +150,48 @@ public class Customers {
         this.phone = phone;
     }
 
-    public Integer getCreditCardType() {
-        return creditCardType;
+
+    @Column(name = "creditcardtype")
+    public Integer getCreditcardtype() {
+        return creditcardtype;
     }
 
-    public void setCreditCardType(Integer creditCardType) {
-        this.creditCardType = creditCardType;
+    public void setCreditcardtype(Integer creditcardtype) {
+        this.creditcardtype = creditcardtype;
     }
 
-    public String getCreditCard() {
-        return creditCard;
+
+    @Column(name = "creditcard")
+    public String getCreditcard() {
+        return creditcard;
     }
 
-    public void setCreditCard(String creditCard) {
-        this.creditCard = creditCard;
+    public void setCreditcard(String creditcard) {
+        this.creditcard = creditcard;
     }
 
-    public String getCreditCardExpiration() {
-        return creditCardExpiration;
+
+    @Column(name = "creditcardexpiration")
+    public String getCreditcardexpiration() {
+        return creditcardexpiration;
     }
 
-    public void setCreditCardExpiration(String creditCardExpiration) {
-        this.creditCardExpiration = creditCardExpiration;
+    public void setCreditcardexpiration(String creditcardexpiration) {
+        this.creditcardexpiration = creditcardexpiration;
     }
 
-    public String getUserName() {
-        return userName;
+
+    @Column(name = "username", unique = true)
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
+
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -221,14 +200,18 @@ public class Customers {
         this.password = password;
     }
 
-    public Integer getAge() {
+
+    @Column(name = "age")
+    public Short getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Short age) {
         this.age = age;
     }
 
+
+    @Column(name = "income")
     public Integer getIncome() {
         return income;
     }
@@ -237,13 +220,22 @@ public class Customers {
         this.income = income;
     }
 
-    public Character getGender() {
+
+    @Column(name = "gender")
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
+    @OneToMany(mappedBy = "customer")
+    public Collection<Orders> getOrdersByCustomerid() {
+        return ordersByCustomerid;
+    }
 
+    public void setOrdersByCustomerid(Collection<Orders> ordersByCustomerid) {
+        this.ordersByCustomerid = ordersByCustomerid;
+    }
 }
